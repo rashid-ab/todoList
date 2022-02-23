@@ -45,11 +45,13 @@ class TaskController extends Controller
         // validate the given request
         $data = $this->validate($request, [
             'title' => 'required|string|max:255',
+            'time' => 'required|string|max:255',
         ]);
 
         // create a new incomplete task with given title
         Auth::user()->tasks()->create([
             'title' => $data['title'],
+            'time' => $data['time'],
             'is_complete' => false,
         ]);
 

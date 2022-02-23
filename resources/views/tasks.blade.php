@@ -25,6 +25,15 @@
                                 </span>
                                 @endif
                             </div>
+                            <div class="form-group">
+                                <label for="time">Time</label>
+                                <input id="time" name="time" type="time" maxlength="255" class="form-control{{ $errors->has('time') ? ' is-invalid' : '' }}" autocomplete="off" />
+                                @if ($errors->has('time'))
+                                    <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $errors->first('time') }}</strong>
+                                </span>
+                                @endif
+                            </div>
                             <button type="submit" class="btn btn-primary">Create</button>
                         </form>
                     </div>
@@ -41,6 +50,13 @@
                                             <s>{{ $task->title }}</s>
                                         @else
                                             {{ $task->title }}
+                                        @endif
+                                    </td>
+                                    <td>
+                                        @if ($task->is_complete)
+                                            <s>{{ $task->time }}</s>
+                                        @else
+                                            {{ $task->time }}
                                         @endif
                                     </td>
                                     <td class="text-right">
